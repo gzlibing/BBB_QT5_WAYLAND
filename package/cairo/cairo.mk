@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-CAIRO_VERSION = 1.12.10
+CAIRO_VERSION = 1.12.16
 CAIRO_SOURCE = cairo-$(CAIRO_VERSION).tar.xz
 CAIRO_LICENSE = LGPLv2.1+
 CAIRO_LICENSE_FILES = COPYING
@@ -43,9 +43,14 @@ endif
 
 CAIRO_CONF_OPT = \
 	--enable-trace=no \
-	--enable-interpreter=no
+	--enable-interpreter=no \
+	--enable-egl=yes \
+	--enable-glesv2=yes \
 
-CAIRO_DEPENDENCIES = host-pkgconf fontconfig pixman
+
+	
+	
+CAIRO_DEPENDENCIES = host-pkgconf fontconfig pixman  gpu-viv-wl-bin-mx6s wayland
 
 ifeq ($(BR2_PACKAGE_DIRECTFB),y)
 	CAIRO_CONF_OPT += --enable-directfb
