@@ -50,7 +50,7 @@ CAIRO_CONF_OPT = \
 
 	
 	
-CAIRO_DEPENDENCIES = host-pkgconf fontconfig pixman  gpu-viv-wl-bin-mx6s wayland
+CAIRO_DEPENDENCIES = host-pkgconf fontconfig pixman  wayland libgles
 
 ifeq ($(BR2_PACKAGE_DIRECTFB),y)
 	CAIRO_CONF_OPT += --enable-directfb
