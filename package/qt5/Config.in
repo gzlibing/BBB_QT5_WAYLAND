@@ -1,4 +1,4 @@
-comment "Qt5 needs a toolchain w/ wchar, IPv6, threads, C++"
+comment "Qt5 needs a toolchain with WCHAR, IPv6, thread and C++ support"
 	depends on !BR2_INSTALL_LIBSTDCPP || !BR2_USE_WCHAR || !BR2_INET_IPV6 || !BR2_TOOLCHAIN_HAS_THREADS
 
 menuconfig BR2_PACKAGE_QT5
@@ -26,4 +26,5 @@ source "package/qt5/qt5script/Config.in"
 source "package/qt5/qt5svg/Config.in"
 source "package/qt5/qt5webkit/Config.in"
 source "package/qt5/qt5xmlpatterns/Config.in"
+source "package/qt5/qtwayland/Config.in"
 endif
