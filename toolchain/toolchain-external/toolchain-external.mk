@@ -254,7 +254,35 @@ endef
 else ifeq ($(BR2_TOOLCHAIN_EXTERNAL_LINARO_2013_04),y)
 TOOLCHAIN_EXTERNAL_SITE = http://releases.linaro.org/13.04/components/toolchain/binaries/
 TOOLCHAIN_EXTERNAL_SOURCE = gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux.tar.bz2
-TOOLCHAIN_EXTERNAL_POST_INSTALL_STAGING_HOOKS += TOOLCHAIN_EXTERNAL_LINARO_ARMHF_SYMLINK
+TOOLCHAIN_EXTERNAL_POST_INSTALL_STAGING_HOOKS += TOOLCHAIN_EXTERNAL_LINARO_ARMHF_SYMLINK 
+ifeq ($(BR2_FORCE_SOFTFP_LINARO),y)
+define TOOLCHAIN_EXTERNAL_FIXUP_CMDS
+	echo "Switch to Linaro softfp lib for lack of FSL WAYLAND package "
+	cp -arf  $(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/lib/gcc/arm-linux-gnueabihf/4.7.3/arm-linux-gnueabi/* \
+		 $(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/lib/gcc/arm-linux-gnueabihf/4.7.3/
+
+	cp -arf  $(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/arm-linux-gnueabihf/lib/arm-linux-gnueabi/*	\
+		 $(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/arm-linux-gnueabihf/lib/
+
+	cp -arf  $(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/arm-linux-gnueabihf/include/c++/4.7.3/arm-linux-gnueabihf/arm-linux-gnueabi/* \
+		 $(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/arm-linux-gnueabihf/include/c++/4.7.3/arm-linux-gnueabihf/
+	
+	cp -arf  $(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/arm-linux-gnueabihf/libc/lib/arm-linux-gnueabi/* \
+		 $(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/arm-linux-gnueabihf/libc/lib/arm-linux-gnueabihf/
+
+	cp -arf  $(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/arm-linux-gnueabihf/libc/usr/lib/debug/lib/arm-linux-gnueabi/* \
+		 $(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/arm-linux-gnueabihf/libc/usr/lib/debug/lib/arm-linux-gnueabihf/
+
+	cp -arf  $(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/arm-linux-gnueabihf/libc/usr/lib/debug/usr/lib/arm-linux-gnueabi/* \
+		 $(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/arm-linux-gnueabihf/libc/usr/lib/debug/usr/lib/arm-linux-gnueabihf/
+
+	cp -arf  $(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabi/* \
+		 $(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/
+	
+	cp -arf  $(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/arm-linux-gnueabihf/libc/usr/include/arm-linux-gnueabi/* \
+		 $(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/arm-linux-gnueabihf/libc/usr/include/arm-linux-gnueabihf/
+endef
+endif
 else ifeq ($(BR2_TOOLCHAIN_EXTERNAL_LINARO_2013_07),y)
 TOOLCHAIN_EXTERNAL_SITE = http://releases.linaro.org/13.07/components/toolchain/binaries/
 TOOLCHAIN_EXTERNAL_SOURCE = gcc-linaro-arm-linux-gnueabihf-4.8-2013.07-1_linux.tar.xz
