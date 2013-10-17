@@ -1,0 +1,14 @@
+diff -Nru gpu-viv-wl-bin-mx6s-3.0.35-4.0.0.ori/usr/lib/pkgconfig/glesv2.pc gpu-viv-wl-bin-mx6s-3.0.35-4.0.0/usr/lib/pkgconfig/glesv2.pc
+--- gpu-viv-wl-bin-mx6s-3.0.35-4.0.0.ori/usr/lib/pkgconfig/glesv2.pc	1970-01-01 08:00:00.000000000 +0800
++++ gpu-viv-wl-bin-mx6s-3.0.35-4.0.0/usr/lib/pkgconfig/glesv2.pc	2013-07-01 23:05:38.412067274 +0800
+@@ -0,0 +1,10 @@
++prefix=/usr
++exec_prefix=${prefix}
++libdir=${exec_prefix}/lib
++includedir=${prefix}/include
++
++Name: glesv2
++Description: RasberryPi implementation of OpenGL ESv2
++Version: 2.0
++Libs: -L${libdir} -lGLESv2
++Cflags: -I${includedir}/
