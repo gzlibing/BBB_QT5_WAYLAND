@@ -1,0 +1,17 @@
+--- weston-1.1.1/clients/window.c.ori	2013-09-27 15:45:15.592517042 +0800
++++ weston-1.1.1/clients/window.c	2013-09-27 15:46:37.732514918 +0800
+@@ -4304,12 +4304,13 @@
+ 		fprintf(stderr, "failed to create EGL context\n");
+ 		return -1;
+ 	}
+-
++#if 0
+ 	if (!eglMakeCurrent(d->dpy, NULL, NULL, d->argb_ctx)) {
+ 		fprintf(stderr, "failed to make EGL context current\n");
+ 		return -1;
+ 	}
+ 
++#endif
+ 	d->argb_device = cairo_egl_device_create(d->dpy, d->argb_ctx);
+ 	if (cairo_device_status(d->argb_device) != CAIRO_STATUS_SUCCESS) {
+ 		fprintf(stderr, "failed to get cairo EGL argb device\n");

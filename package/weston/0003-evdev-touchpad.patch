@@ -1,0 +1,26 @@
+--- weston-1.1.0/src/evdev-touchpad.c.old	2013-09-17 12:41:58.349711239 +0800
++++ weston-1.1.0/src/evdev-touchpad.c	2013-09-17 12:43:01.965709594 +0800
+@@ -38,6 +38,9 @@
+ #define DEFAULT_TOUCHPAD_SINGLE_TAP_BUTTON BTN_LEFT
+ #define DEFAULT_TOUCHPAD_SINGLE_TAP_TIMEOUT 100
+ 
++#define INPUT_PROP_MAX                     0x1f
++#define INPUT_PROP_BUTTONPAD               0x02
++
+ enum touchpad_model {
+ 	TOUCHPAD_MODEL_UNKNOWN = 0,
+ 	TOUCHPAD_MODEL_SYNAPTICS,
+@@ -684,10 +687,11 @@
+ 
+ 	/* Detect model */
+ 	touchpad->model = get_touchpad_model(device);
+-
++#if 0
+ 	ioctl(device->fd, EVIOCGPROP(sizeof(prop_bits)), prop_bits);
+ 	has_buttonpad = TEST_BIT(prop_bits, INPUT_PROP_BUTTONPAD);
+-
++#endif 
++	has_buttonpad = 0 ;
+ 	/* Configure pressure */
+ 	ioctl(device->fd, EVIOCGBIT(EV_ABS, sizeof(abs_bits)), abs_bits);
+ 	if (TEST_BIT(abs_bits, ABS_PRESSURE)) {

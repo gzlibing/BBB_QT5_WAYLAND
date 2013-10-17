@@ -1,0 +1,11 @@
+--- weston-1.1.0/src/compositor-fbdev.c	2013-09-17 12:51:20.589696700 +0800
++++ weston-1.1.0.new/src/compositor-fbdev.c	2013-09-17 12:51:01.233697200 +0800
+@@ -287,6 +287,8 @@
+ 	         vinfo->green.offset >= vinfo->blue.offset &&
+ 	         vinfo->blue.offset >= vinfo->transp.offset)
+ 		type = PIXMAN_TYPE_RGBA;
++	//fake it 	
++	type = PIXMAN_TYPE_RGBA;
+ 
+ 	if (type == PIXMAN_TYPE_OTHER)
+ 		return 0;
