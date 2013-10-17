@@ -76,7 +76,6 @@ config BR2_TOOLCHAIN_EXTERNAL_LINARO_2013_04
 	depends on BR2_arm
 	depends on BR2_GCC_TARGET_ARCH = "armv7-a"
 	depends on BR2_HOSTARCH = "x86_64" || BR2_HOSTARCH = "x86"
-	depends on BR2_ARM_EABIHF
 	select BR2_TOOLCHAIN_EXTERNAL_GLIBC
 	select BR2_TOOLCHAIN_HAS_NATIVE_RPC
 	select BR2_INSTALL_LIBSTDCPP
@@ -822,6 +821,8 @@ config BR2_TOOLCHAIN_EXTERNAL_PREINSTALLED
 
 endchoice
 
+config BR2_FORCE_SOFTFP_LINARO
+	bool	"Linaro force softfp"
 config BR2_TOOLCHAIN_EXTERNAL_PATH
 	string "Toolchain path"
 	default "/path/to/toolchain/usr"
