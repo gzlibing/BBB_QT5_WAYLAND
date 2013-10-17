@@ -22,6 +22,10 @@ ifeq ($(BR2_PACKAGE_GPU_VIV_BIN_MX6Q),y)
 LIBEGL_DEPENDENCIES += gpu-viv-bin-mx6q
 endif
 
+ifeq ($(BR2_PACKAGE_GPU_VIV_WL_BIN_MX6S),y)
+LIBEGL_DEPENDENCIES += gpu-viv-wl-bin-mx6s
+endif 
+
 ifeq ($(LIBEGL_DEPENDENCIES),)
 define LIBEGL_CONFIGURE_CMDS
 	echo "No libEGL implementation selected. Configuration error."
