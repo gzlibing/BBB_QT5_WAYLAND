@@ -1,0 +1,13 @@
+--- qtbase-opensource-src-5.1.1/mkspecs/devices/linux-imx6-g++/qmake.conf.old	2013-09-18 13:45:20.263378737 +0800
++++ qtbase-opensource-src-5.1.1/mkspecs/devices/linux-imx6-g++/qmake.conf	2013-09-18 13:45:57.863377765 +0800
+@@ -27,8 +27,8 @@
+ 
+ QMAKE_LFLAGS           += -Wl,-rpath-link,$$[QT_SYSROOT]/usr/lib
+ 
+-IMX6_CFLAGS             = -march=armv7-a -mfpu=neon -DLINUX=1 -DEGL_API_FB=1
+-IMX6_CFLAGS_RELEASE     = -O2 $$IMX6_CFLAGS
++IMX6_CFLAGS             = -march=armv7-a -mcpu=cortex-a9 -mfpu=neon -DLINUX=1 -DEGL_API_FB=1
++IMX6_CFLAGS_RELEASE     = -O3 $$IMX6_CFLAGS
+ QMAKE_CFLAGS_RELEASE   += $$IMX6_CFLAGS_RELEASE
+ QMAKE_CXXFLAGS_RELEASE += $$IMX6_CFLAGS_RELEASE
+ QMAKE_CFLAGS_DEBUG     += $$IMX6_CFLAGS
