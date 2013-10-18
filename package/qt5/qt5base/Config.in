@@ -13,6 +13,10 @@ config BR2_PACKAGE_QT5BASE
 
 	  http://qt-project.org
 
+config BR2_PACKAGE_QT5BASE_DEVICE
+	string "Qt Default device " 
+	help 
+	  Select qt embed device configure 
 if BR2_PACKAGE_QT5BASE
 
 config BR2_PACKAGE_QT5BASE_LICENSE_APPROVED
@@ -30,6 +34,11 @@ config BR2_PACKAGE_QT5BASE_LICENSE_APPROVED
 
 config BR2_PACKAGE_QT5BASE_NETWORK
 	bool "network module"
+	help
+	  This options enables the Qt5Network library.
+
+config BR2_PACKAGE_QT5BASE_PROXY
+	bool "Qt Proxy use system as defualt "
 	help
 	  This options enables the Qt5Network library.
 

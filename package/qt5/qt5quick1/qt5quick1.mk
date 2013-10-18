@@ -33,9 +33,12 @@ define QT5QUICK1_INSTALL_STAGING_CMDS
 endef
 
 define QT5QUICK1_INSTALL_TARGET_CMDS
-	cp -dpf $(STAGING_DIR)/usr/lib/libQt5Declarative.so.* $(TARGET_DIR)/usr/lib
-	cp -dpf $(STAGING_DIR)/usr/lib/qt/plugins/qmltooling/libqmldbg_inspector.so $(TARGET_DIR)/usr/lib/qt/plugins/qmltooling/
-	cp -dpf $(STAGING_DIR)/usr/lib/qt/plugins/qmltooling/libqmldbg_tcp_qtdeclarative.so $(TARGET_DIR)/usr/lib/qt/plugins/qmltooling/
+	cd $(@D); \
+	cp -dpf lib/libQt5Declarative.so.* $(TARGET_DIR)/usr/lib ;\
+	cp -dpf	plugins/qml1tooling/*	 $(TARGET_DIR)/usr/lib/qt/plugins/qmltooling ;\
+	cp -dpf lib/libQt5Declarative.so.* $(STAGING_DIR)/usr/lib/ ;\
+	cp -dpf	plugins/qml1tooling/*	 $(STAGING_DIR)/usr/lib/qt/plugins/qmltooling ;\
+
 	cp -dpfr $(STAGING_DIR)/usr/imports $(TARGET_DIR)/usr
 endef
 

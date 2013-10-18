@@ -8,7 +8,7 @@ QT5BASE_VERSION = $(QT5_VERSION)
 QT5BASE_SITE = $(QT5_SITE)
 QT5BASE_SOURCE = qtbase-opensource-src-$(QT5BASE_VERSION).tar.xz
 
-QT5BASE_DEPENDENCIES = host-pkgconf zlib pcre
+QT5BASE_DEPENDENCIES = host-pkgconf zlib pcre wayland weston
 QT5BASE_INSTALL_STAGING = YES
 
 # A few comments:
@@ -94,7 +94,7 @@ endif
 ifeq ($(BR2_PACKAGE_QT5BASE_EGLFS),y)
 QT5BASE_CONFIGURE_OPTS += -opengl es2 -eglfs
 QT5BASE_DEPENDENCIES   += libgles libegl
-ifeq ($(BR2_PACKAGE_GPU_VIV_BIN_MX6Q),y)
+ifeq ($(BR2_PACKAGE_GPU_VIV_WL_BIN_MX6S),y)
 QT5BASE_EGLFS_PLATFORM_HOOKS_SOURCES = \
 	$(@D)/mkspecs/devices/linux-imx6-g++/qeglfshooks_imx6.cpp
 endif
@@ -125,6 +125,8 @@ QT5BASE_DEPENDENCIES   += $(if $(BR2_PACKAGE_LIBGLIB2),libglib2)
 
 QT5BASE_CONFIGURE_OPTS += $(if $(BR2_PACKAGE_QT5BASE_ICU),-icu,-no-icu)
 QT5BASE_DEPENDENCIES   += $(if $(BR2_PACKAGE_QT5BASE_ICU),icu)
+
+QT5BASE_CONFIGURE_OPTS += $(if $(BR2_PACKAGE_QT5BASE_PROXY),-system-proxies) 
 
 # Build the list of libraries to be installed on the target
 QT5BASE_INSTALL_LIBS_y                                 += Qt5Core
@@ -168,8 +170,10 @@ define QT5BASE_CONFIGURE_CMDS
 		-sysroot $(STAGING_DIR) \
 		-plugindir /usr/lib/qt/plugins \
 		-no-rpath \
-		-device buildroot \
+		-device $(BR2_PACKAGE_QT5BASE_DEVICE) \
+		-device-option CROSS_COMPILE=$(TOOLCHAIN_EXTERNAL_INSTALL_DIR)/bin/$(BR2_TOOLCHAIN_EXTERNAL_PREFIX)- \
 		-no-c++11 \
+		-make libs \
 		$(QT5BASE_CONFIGURE_OPTS) \
 	)
 endef
