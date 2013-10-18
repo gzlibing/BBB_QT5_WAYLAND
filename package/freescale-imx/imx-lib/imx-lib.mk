@@ -5,11 +5,17 @@
 ################################################################################
 
 IMX_LIB_VERSION = $(FREESCALE_IMX_VERSION)
-IMX_LIB_SITE    = $(FREESCALE_IMX_MIRROR_SITE)
+IMX_LIB_SITE    = $(FREESCALE_IMX_MIRROR_SITE) 
+IMX_LIB_SOURCE  = imx-lib-${IMX_LIB_VERSION}.bin
 IMX_LIB_LICENSE = LGPLv2.1+
 # No license file included
 
 IMX_LIB_INSTALL_STAGING = YES
+
+define IMX_LIB_EXTRACT_CMDS
+        (cd $(BUILD_DIR); \
+                sh $(DL_DIR)/$(IMX_LIB_SOURCE) --force --auto-accept)
+endef
 
 # imx-lib needs access to imx-specific kernel headers
 IMX_LIB_DEPENDENCIES += linux

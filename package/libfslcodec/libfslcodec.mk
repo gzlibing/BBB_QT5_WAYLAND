@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LIBFSLCODEC_VERSION = 3.0.1
+LIBFSLCODEC_VERSION = 3.5.7-1.0.0
 # No official download site from freescale, just this mirror
 LIBFSLCODEC_SITE = http://download.ossystems.com.br/bsp/freescale/source
 LIBFSLCODEC_SOURCE = libfslcodec-$(LIBFSLCODEC_VERSION).bin

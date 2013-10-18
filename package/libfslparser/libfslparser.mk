@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LIBFSLPARSER_VERSION = 3.0.1
+LIBFSLPARSER_VERSION = 3.5.7-1.0.0
 # No official download site from freescale, just this mirror
 LIBFSLPARSER_SITE = http://download.ossystems.com.br/bsp/freescale/source
 LIBFSLPARSER_SOURCE = libfslparser-$(LIBFSLPARSER_VERSION).bin
@@ -36,5 +36,5 @@ endef
 
 # The Makefile installs several versions of the libraries, but we only
 # need one of them, depending on the platform.
-
 $(eval $(autotools-package))
+
